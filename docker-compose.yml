@@ -1,0 +1,29 @@
+#postgresData:
+#   image: postgres:9.4
+#   command: echo "Data-only container for TPA postgres"
+#
+# postgres:
+#   image: postgres:9.4
+#   volumes_from:
+#    - postgresData
+#   ports:
+#    - "5432:5432"
+#   restart: always
+#
+# webData:
+#   image: metube/web
+#   volumes:
+#    - ./backend/:/usr/local/metube/backend/
+#   command: echo "Data-only container for TPA web"
+
+web:
+  image: metube/web
+  ports:
+   - "80:80"
+  # links:
+  #  - postgres
+  # environment:
+  #  - DJANGO_SETTINGS_MODULE=backend.settings.web
+  # volumes_from:
+  #  - webData
+  restart: always
