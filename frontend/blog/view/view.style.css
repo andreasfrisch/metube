@@ -1,0 +1,51 @@
+.blogView {
+  margin: auto;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 25px; }
+  .blogView .post hr {
+    margin: 10px 0; }
+  .blogView .post .title {
+    font-size: 30px; }
+  .blogView .post .metaData {
+    margin: auto; }
+    .blogView .post .metaData .postedDate {
+      text-align: left;
+      margin: 0;
+      padding: 0;
+      display: inline-block; }
+    .blogView .post .metaData .author {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: inline-block; }
+    .blogView .post .metaData .tags.float-right {
+      display: inline;
+      float: right; }
+  .blogView .post .content p {
+    margin: 0;
+    padding: 10px 0; }
+  .blogView .post .content .header {
+    font-weight: bold;
+    font-size: 1.2em; }
+  .blogView .post .content .text {
+    text-align: justify;
+    text-justify: inter-word; }
+    .blogView .post .content .text.firstParagraph p:first-child:first-letter {
+      float: left;
+      font-size: 55px;
+      line-height: 50px;
+      padding-top: 4px;
+      padding-right: 8px;
+      padding-left: 3px;
+      font-family: Georgia; }
+  .blogView .post .content .image {
+    text-align: center; }
+    .blogView .post .content .image img {
+      max-width: 100%; }
+    .blogView .post .content .image .caption {
+      margin: 0;
+      padding: 0;
+      font-size: 0.9em; }
+
+/*# sourceMappingURL=view.style.css.map */

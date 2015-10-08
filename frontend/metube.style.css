@@ -1,0 +1,11 @@
+body {
+  background-color: #eee; }
+
+a:hover, a:active, a:visited, a:link {
+  text-decoration: none;
+  color: #903; }
+
+.ghost {
+  color: #888; }
+
+/*# sourceMappingURL=metube.style.css.map */

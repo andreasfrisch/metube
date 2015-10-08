@@ -5,8 +5,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'metube.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', 'backend.views.home', name='metube_home'),
+    url(r'^api/', include([
+        url(r'^blog/', include('backend.blog.api_urls')),
+        url(r'^auth/', include('backend.auth.api_urls'))
+    ])),
+    
     url(r'^admin/', include(admin.site.urls)),
 )

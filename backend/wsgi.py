@@ -1,5 +1,5 @@
 """
-WSGI config for metube project.
+WSGI config for Metube project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

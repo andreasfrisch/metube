@@ -13,7 +13,7 @@
 # webData:
 #   image: metube/web
 #   volumes:
-#    - ./backend/:/usr/local/metube/backend/
+#    - ./metube/:/usr/local/metube/metube/
 #   command: echo "Data-only container for TPA web"
 
 web:
@@ -22,8 +22,6 @@ web:
    - "80:80"
   # links:
   #  - postgres
-  # environment:
-  #  - DJANGO_SETTINGS_MODULE=backend.settings.web
   # volumes_from:
   #  - webData
   restart: always

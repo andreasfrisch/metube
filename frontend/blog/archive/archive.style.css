@@ -1,0 +1,37 @@
+.blogArchive {
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 25px; }
+  .blogArchive .archiveContent .titleBar {
+    margin: 10px 0; }
+    .blogArchive .archiveContent .titleBar .title {
+      font-size: 36px; }
+    .blogArchive .archiveContent .titleBar .searchContainer {
+      margin: 0;
+      float: right; }
+      .blogArchive .archiveContent .titleBar .searchContainer .searchBar {
+        vertical-align: top;
+        line-height: 30px;
+        font-size: 14px; }
+      .blogArchive .archiveContent .titleBar .searchContainer .searchButton {
+        background-color: #ccc;
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        line-height: 30px;
+        cursor: pointer; }
+  .blogArchive .archiveContent hr {
+    margin: 10px 0; }
+  .blogArchive .archiveContent a {
+    color: #000; }
+  .blogArchive .archiveContent .post {
+    margin: 15px 0; }
+    .blogArchive .archiveContent .post p {
+      margin: 0;
+      padding: 0; }
+    .blogArchive .archiveContent .post .title {
+      font-size: 30px; }
+
+/*# sourceMappingURL=archive.style.css.map */
