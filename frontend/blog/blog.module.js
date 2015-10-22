@@ -3,7 +3,8 @@
 angular.module('blog', [
 	'blogView',
 	'blogArchive',
-	'blogCreate'
+	'blogCreate',
+    'blogNewest',
 ])
 .constant('paragraphTypes', [
 	'header',

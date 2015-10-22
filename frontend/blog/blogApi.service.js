@@ -9,6 +9,7 @@ angular.module('blog')
 		getFilteredPosts: _getFilteredPosts,
 		getSpecificPost: _getSpecificPost,
 		createNewPost: _createNewPost,
+        getNewestPost: _getNewestPost,
 	};
 	
 	// Function definitions:
@@ -60,6 +61,7 @@ angular.module('blog')
 		$http.post('/api/blog/posts/', newPostData)
         .then(
             function(response) {
+                console.log(response);
                 deferred.resolve(response.status);
             }
             //handle error
@@ -68,4 +70,16 @@ angular.module('blog')
         return deferred.promise;
 	}
 	
+    function _getNewestPost() {
+        var deferred = $q.defer();
+        $http.get('/api/blog/newest/')
+        .then(
+            function(response) {
+                deferred.resolve(response)
+            }
+            //handle error
+        );
+        return deferred.promise;
+    }
+    
 }]);

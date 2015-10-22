@@ -8,7 +8,6 @@ angular.module('menu')
 	this.links = [];
 	
 	this.addLink = function addLinkToMenu(newLink) {
-		console.log('menuService; adding a link - ', newLink);
 		this.links.push(newLink);
 	}
 	this.addLinks = function addMultipleLinksToMenu(linkList) {

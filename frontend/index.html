@@ -32,24 +32,29 @@
 
 	<!-- metube scripts -->
 	<script src="{% static 'metube.module.js' %}"></script>
-	
-	<!-- common directives: -->
-	<script src="{% static 'menu/menu.module.js' %}"></script>
-	<script src="{% static 'menu/menu.service.js' %}"></script>
-	<script src="{% static 'menu/menu.controller.js' %}"></script>
-	
+
 	<!-- authentication: -->
 	<script src="{% static 'authentication/authentication.module.js' %}"></script>
 	<script src="{% static 'authentication/authenticationApi.service.js' %}"></script>
 	<script src="{% static 'authentication/authenticationStatus.service.js' %}"></script>
 	<script src="{% static 'authentication/authentication.controller.js' %}"></script>
+		
+	<!-- common directives: -->
+	<script src="{% static 'menu/menu.module.js' %}"></script>
+	<script src="{% static 'menu/menu.service.js' %}"></script>
+	<script src="{% static 'menu/menu.controller.js' %}"></script>
 	
+    <!-- portal: -->
+    <script src="{% static 'portal.controller.js' %}"></script>
+    
 	<!-- blog: -->
 	<script src="{% static 'blog/blog.module.js' %}"></script>
 	<script src="{% static 'blog/blogApi.service.js' %}"></script>
 	<script src="{% static 'blog/blogMenu.controller.js' %}"></script>
 	<script src="{% static 'blog/archive/archive.module.js' %}"></script>
 	<script src="{% static 'blog/archive/archive.controller.js' %}"></script>
+	<script src="{% static 'blog/newest/newest.module.js' %}"></script>
+	<script src="{% static 'blog/newest/newest.controller.js' %}"></script>
 	<script src="{% static 'blog/view/view.module.js' %}"></script>
 	<script src="{% static 'blog/view/view.controller.js' %}"></script>
 	<script src="{% static 'blog/view/paragraph.directive.js' %}"></script>
@@ -90,13 +95,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Metube</a>
+				<a class="navbar-brand" ui-sref="portal">Metube</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li ng-repeat="link in menuLinks" ng-class="{active: isActive(link.stateRoot || link.state)}">
+					<li ng-repeat="link in menuLinks" ng-class="{active: isActive(link.stateRoot || link.state)}" ng-show="{{link.visible}}">
 							<a ui-sref={{link.state}}>
 								{{link.title}} <span class="sr-only">(current)</span>
 							</a>
