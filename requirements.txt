@@ -1,6 +1,8 @@
 Django==1.8.5
 
-django_compressor
+django-compressor
+django-bower
+django-libsass
 pylint
 pylint-django
 coverage

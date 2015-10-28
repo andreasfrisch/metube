@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
+    'djangobower',
     'compressor',
     'backend.blog',
     'backend.authentication',
@@ -89,17 +90,36 @@ USE_TZ = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
     'compressor.finders.CompressorFinder',
     )
+
 STATIC_URL = '/static/'
+
 ADMIN_MEDIA_PREFIX = '/static/admin/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "frontend"),
 )
 
+COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
+COMPRESS_URL = STATIC_URL
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'backend.compressor_filters.PatchedSCSSCompiler'),
+)
+COMPRESS_CSS_FILTERS = (
+    'backend.compressor_filters.CustomCssAbsoluteFilter',
+)
 
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'bower_components')
+
+BOWER_INSTALLED_APPS = (
+    'bootstrap-sass-official#3.3.1',
+)
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

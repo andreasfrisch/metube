@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAEA,IAAK;EACJ,gBAAgB,EAAE,IAAI;;AAGvB,oCAAqC;EACpC,eAAe,EAAE,IAAI;EACrB,KAAK,ECPO,IAAI;;ADUjB,MAAO;EACN,KAAK,ECZQ,IAAI",
-"sources": ["metube.style.scss","_colors.scss"],
-"names": [],
-"file": "metube.style.css"
-}
