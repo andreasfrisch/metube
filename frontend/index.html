@@ -13,14 +13,14 @@
 	<!-- Load styling -->
     {% compress css %}
 	<link rel="stylesheet" href="{% static 'libs/bootstrap/dist/css/bootstrap.min.css' %}">
+
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'metube.style.scss' %}">
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'authentication/authentication.style.scss' %}">
 	
-	<link rel="stylesheet" href="{% static 'metube.style.scss' %}">
-	<link rel="stylesheet" href="{% static 'authentication/authentication.style.scss' %}">
-	
-	<link rel="stylesheet" href="{% static 'blog/menu.style.scss' %}">
-	<link rel="stylesheet" href="{% static 'blog/view/view.style.scss' %}">
-	<link rel="stylesheet" href="{% static 'blog/archive/archive.style.scss' %}">
-	<link rel="stylesheet" href="{% static 'blog/create/create.style.scss' %}">
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/menu.style.scss' %}">
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/view/view.style.scss' %}">
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/archive/archive.style.scss' %}">
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/create/create.style.scss' %}">
     {% endcompress %}
 
 	<!-- Load logic -->

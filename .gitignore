@@ -1,1 +1,5 @@
 *.pyc
+metube_environment/
+static/
+test.db
+
