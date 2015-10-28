@@ -1,50 +1,47 @@
+"""
+Request handlers for the authentication API
+"""
+
 import json
 
 from django.contrib import auth
 from django.http import HttpResponse
-from backend.auth.models import Token
+from backend.authentication.models import Token
 from backend.utils import json_response, token_required
 
 def login(request):
+    """
+    Login user and return valid access token
+    """
     if request.method == 'POST':
-        print("GOT A POST")
-        print(">> body: %s" % request.body)
-        print(">> POST: %s" % request.POST)
         parsed_body = json.loads(request.body)
-        print("parsed that shit")
         username = parsed_body["username"]
         password = parsed_body["password"]
 
-        print("read that shit")
         if username is not None and password is not None:
-            print("authenticating")
             try:
                 user = auth.authenticate(username=username, password=password)
-            except Exception as e:
-                print(e)
-            print("authenticated that shit")
+            except Exception as exception:
+                print exception
             if user is not None:
                 if user.is_active:
                     try:
-                        token, created = Token.objects.get_or_create(user=user)
+                        token, _ = Token.objects.get_or_create(user=user)
                         return json_response({
                             'token': token.token,
                             'username': user.username
                         })
-                    except Exception as e:
-                        print(e)
+                    except Exception as exception:
+                        print exception
                 else:
-                    print("invalid user")
                     return json_response({
                         'error': 'Invalid User'
                     }, status=400)
             else:
-                print("invalid username/password")
                 return json_response({
                     'error': 'Invalid Username/Password'
                 }, status=400)
         else:
-            print("invalid data")
             return json_response({
                 'error': 'Invalid Data'
             }, status=400)
@@ -57,6 +54,9 @@ def login(request):
 
 @token_required
 def logout(request):
+    """
+    Logout by invalidating user access token
+    """
     if request.method == 'POST':
         request.token.delete()
         return json_response({
@@ -68,7 +68,10 @@ def logout(request):
         return json_response({
             'error': 'Invalid Method'
         }, status=405)
-        
+
 @token_required
 def verify(request):
+    """
+    Verify correctness of access token
+    """
     return HttpResponse(status=200)

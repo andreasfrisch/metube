@@ -17,18 +17,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO: decouple this from settings
 SECRET_KEY = '^sc7wh-girg@!l)adkjkc39k-kiiva*=!hay@6dr&el_4gqvb*'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,8 +35,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
+    'compressor',
     'backend.blog',
-    'backend.auth',
+    'backend.authentication',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,6 +89,7 @@ USE_TZ = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
     )
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
@@ -95,3 +97,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "frontend"),
 )
+
+COMPRESS_OFFLINE = True
+
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the backend
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=backend',
+]

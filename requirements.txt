@@ -1,2 +1,7 @@
-Django==1.6.8
+Django==1.8.5
 
+django_compressor
+pylint
+pylint-django
+coverage
+django-nose

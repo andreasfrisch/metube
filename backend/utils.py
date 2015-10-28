@@ -1,23 +1,33 @@
-# Utility functions used throughout the backend
-#
-#
+"""
+    Utility functions used throughout the backend
+    Author: Andreas Frisch
+"""
 
 import json
 from django.http import HttpResponse
-from backend.auth.models import Token
+from backend.authentication.models import Token
 
 def json_response(response_dict, status=200):
-    response = HttpResponse(json.dumps(response_dict), content_type="application/json", status=status)
+    """
+    Convert dicitonary to JSON and return as a HTTP Response with JSON content
+    """
+    response = HttpResponse(
+        json.dumps(response_dict),
+        content_type="application/json",
+        status=status
+    )
     response['Access-Control-Allow-Origin'] = '*'
     response['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
     return response
 
 def token_required(func):
+    """
+    Decorator to assert valid accesstoken in request
+    """
     def inner(request, *args, **kwargs):
         try:
             if request.method == 'OPTIONS':
                 return func(request, *args, **kwargs)
-            print(request.META.get('HTTP_AUTHORIZATION', None))
             auth_header = request.META.get('HTTP_AUTHORIZATION', None)
             if auth_header is not None:
                 tokens = auth_header.split(' ')
@@ -33,7 +43,7 @@ def token_required(func):
             return json_response({
                 'error': 'Invalid Header'
             }, status=401)
-        except Exception as e:
-            print(e)
-        
+        except Exception as exception:
+            print exception # TODO: using logging framework instead
+
     return inner
