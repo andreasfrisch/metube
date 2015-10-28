@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # TODO: decouple this from settings
 SECRET_KEY = '^sc7wh-girg@!l)adkjkc39k-kiiva*=!hay@6dr&el_4gqvb*'
 
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = False
 
