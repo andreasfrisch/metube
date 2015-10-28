@@ -2,6 +2,7 @@
 <html>
 <head>
     {% load staticfiles %}
+    {% load compress %}
     
 	<!-- META -->
 	<meta charset="utf-8">
@@ -10,6 +11,7 @@
 	<title>Metube (WIP)</title>
 
 	<!-- Load styling -->
+    {% compress css %}
 	<link rel="stylesheet" href="{% static 'libs/bootstrap/dist/css/bootstrap.min.css' %}">
 	
 	<link rel="stylesheet" href="{% static 'metube.style.css' %}">
@@ -19,8 +21,10 @@
 	<link rel="stylesheet" href="{% static 'blog/view/view.style.css' %}">
 	<link rel="stylesheet" href="{% static 'blog/archive/archive.style.css' %}">
 	<link rel="stylesheet" href="{% static 'blog/create/create.style.css' %}">
+    {% endcompress %}
 
 	<!-- Load logic -->
+    {% compress js %}
 	<!-- angular or third party scripts -->
 	<!-- bower:js -->
 	<script src="{% static 'libs/jquery/dist/jquery.js' %}"></script>
@@ -65,6 +69,7 @@
 	<script src="{% static 'blog/create/create.preview.controller.js' %}"></script>
 	<script src="{% static 'blog/create/paragraphsParserAndFormatter.directive.js' %}"></script>
 	<script src="{% static 'blog/create/tagsParserAndFormatter.directive.js' %}"></script>
+    {% endcompress %}
 
 </head>
 <body ng-app="metube" ng-controller="menu">
