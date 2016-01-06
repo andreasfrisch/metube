@@ -8,6 +8,7 @@ angular.module('blog')
 		getAllPosts: _getAllPosts,
 		getFilteredPosts: _getFilteredPosts,
 		getSpecificPost: _getSpecificPost,
+		getSpecificPostById: _getSpecificPostById,
 		createNewPost: _createNewPost,
         getNewestPost: _getNewestPost,
 	};
@@ -42,6 +43,7 @@ angular.module('blog')
 		deferred.reject(501);
 		return deferred.promise;
 	}
+    
 	function _getSpecificPost(slug) {
 		var deferred = $q.defer();
 		//deferred.resolve(MOCKpostList[postId]);
@@ -54,10 +56,22 @@ angular.module('blog')
 		);
 		return deferred.promise;
 	}
+	function _getSpecificPostById(id) {
+		var deferred = $q.defer();
+		//deferred.resolve(MOCKpostList[postId]);
+		$http.get('/api/blog/posts/id/'+id)
+		.then(
+			function(response) {
+				deferred.resolve(_interpretPostContent(response.data));
+			}
+			//handle error
+		);
+		return deferred.promise;
+	}
+    
 	function _createNewPost(newPostData) {
         var deferred = $q.defer();
         newPostData.date_unix_seconds = new Date(newPostData.date).getTime() / 1000; //Convert time string to unix_seconds; TODO: Fix format: YYYY-MM-DD
-        console.log(newPostData);
 		$http.post('/api/blog/posts/', newPostData)
         .then(
             function(response) {

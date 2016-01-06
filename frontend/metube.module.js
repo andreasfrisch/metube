@@ -6,6 +6,7 @@ angular.module('metube', [
 	'authentication',
     'portal',
 	'blog',
+    'gallery',
 ])
 .factory('tokenInterceptor', ['$q', 'authenticationStatus', function($q, authenticationStatus) {
 	return {
@@ -42,7 +43,12 @@ angular.module('metube', [
 		return $q.reject(rejection);
 	}
 }])
-.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'blogApiProvider', 'galleryApiProvider',
+        function($stateProvider, $urlRouterProvider, $httpProvider, blogApiProvider, galleryApiProvider) {
+    
+    //set blogEndpoint
+    blogApiProvider.setBackendEndpoint('/api/blog/posts/');
+    galleryApiProvider.setBackendEndpoint('/api/gallery/images/');
     
     //CSRF protection
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
@@ -64,7 +70,7 @@ angular.module('metube', [
 		url: '/auth/login',
 		templateUrl: '/static/authentication/login.html',
 		controller: 'authentication',
-		access: {requiresLogin: false}	
+		access: {requiresLogin: false}
 	})
 	
 	// Blog
@@ -73,7 +79,7 @@ angular.module('metube', [
 		//abstract: true,
 		template: '<div ui-view></div>', //'blog/menu.html',
 		controller: 'blogMenu',
-		access: {requiresLogin: false}	
+		access: {requiresLogin: false}
 	})
 	.state('blog.archive', {
 		url: '/archive?tags&',
@@ -93,30 +99,38 @@ angular.module('metube', [
 		controller: 'blogView',
 		access: {requiresLogin: false}	
 	})
-	.state('blog.create', {
-		url: '/create',
+	.state('blog.edit', {
+		url: '/edit',
 		abstract: true,
-		templateUrl: '/static/blog/create/create.frame.html',
+		templateUrl: '/static/blog/edit/edit.frame.html',
 		access: {requiresLogin: true}
 	})
-	.state('blog.create.content', {
-		url: '/content',
-		templateUrl: '/static/blog/create/create.content.html',
-		controller: 'blogCreateContent',
+	.state('blog.edit.content', {
+		url: '/content/:id',
+		templateUrl: '/static/blog/edit/edit.content.html',
+		controller: 'blogEdit',
 		access: {requiresLogin: true}
 	})
-	.state('blog.create.layout', {
-		url: '/layout',
-		templateUrl: '/static/blog/create/create.layout.html',
-		controller: 'blogCreateLayout',
+	.state('blog.edit.layout', {
+		url: '/layout/:id',
+		templateUrl: '/static/blog/edit/edit.layout.html',
+		controller: 'blogEdit',
 		access: {requiresLogin: true}
 	})
-	.state('blog.create.preview', {
-		url: '/preview',
-		templateUrl: '/static/blog/create/create.preview.html',
-		controller: 'blogCreatePreview',
+	.state('blog.edit.preview', {
+		url: '/preview/:id',
+		templateUrl: '/static/blog/edit/edit.preview.html',
+		controller: 'blogEdit',
 		access: {requiresLogin: true}
 	})
+    
+	// Gallery
+	.state('gallery', {
+		url: '/gallery',
+		templateUrl: '/static/gallery/gallery.index.html',
+		controller: 'galleryIndex',
+		access: {requiresLogin: false}
+    })
 }])
 .run(['$rootScope', '$state', 'authenticationStatus', 'authenticationApi', function($rootScope, $state, authenticationStatus, authenticationApi) {
 	// redirect to login if attempting to access restricted pages without authentication

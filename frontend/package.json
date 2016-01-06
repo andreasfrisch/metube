@@ -1,0 +1,19 @@
+{
+  "name": "metube_frontend",
+  "version": "1.0.0",
+  "description": "Frontend for the Metube project",
+  "main": "metube.module.js",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.1.4",
+    "ng-file-upload": "^10.1.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andreas Frisch",
+  "license": "ISC"
+}

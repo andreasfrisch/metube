@@ -21,6 +21,9 @@ build-metube-web:
 compose-up:
 	docker-compose -p metube up -d
 
+static-compress:
+	docker exec -it metube_web_1 python manage.py compress
+
 #
 # Testing
 #

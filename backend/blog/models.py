@@ -45,6 +45,7 @@ class Post(models.Model):
         Convert post object to dictionary
         """
         post = {
+            "id": self.id,
             "title": self.title,
             "slug": self.slug,
             "tags": [t.strip() for t in self.tags.split(',')],

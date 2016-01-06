@@ -20,18 +20,21 @@
 	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/menu.style.scss' %}">
 	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/view/view.style.scss' %}">
 	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/archive/archive.style.scss' %}">
-	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/create/create.style.scss' %}">
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'blog/edit/edit.style.scss' %}">
+
+	<link rel="stylesheet" type="text/x-scss" href="{% static 'gallery/gallery.style.scss' %}">
     {% endcompress %}
 
 	<!-- Load logic -->
     {% compress js %}
 	<!-- angular or third party scripts -->
 	<!-- bower:js -->
-	<script src="{% static 'libs/jquery/dist/jquery.js' %}"></script>
-	<script src="{% static 'libs/angular/angular.js' %}"></script>
-	<script src="{% static 'libs/angular-ui-router/release/angular-ui-router.js' %}"></script>
-	<script src="{% static 'libs/angular-mocks/angular-mocks.js' %}"></script>
-	<script src="{% static 'libs/bootstrap/dist/js/bootstrap.js' %}"></script>
+	<script src="{% static 'node_modules/jquery/dist/jquery.js' %}"></script>
+	<script src="{% static 'node_modules/angular/angular.js' %}"></script>
+	<script src="{% static 'node_modules/angular-ui-router/release/angular-ui-router.js' %}"></script>
+	<!--<script src="{% static 'libs/angular-mocks/angular-mocks.js' %}"></script>-->
+	<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.js' %}"></script>
+	<script src="{% static 'node_modules/ng-file-upload/dist/ng-file-upload.js' %}"></script>
 	<!-- endbower -->
 
 	<!-- metube scripts -->
@@ -53,7 +56,8 @@
     
 	<!-- blog: -->
 	<script src="{% static 'blog/blog.module.js' %}"></script>
-	<script src="{% static 'blog/blogApi.service.js' %}"></script>
+	<script src="{% static 'blog/blogApi.provider.js' %}"></script>
+	<!--<script src="{% static 'blog/blogApi.service.js' %}"></script>-->
 	<script src="{% static 'blog/blogMenu.controller.js' %}"></script>
 	<script src="{% static 'blog/archive/archive.module.js' %}"></script>
 	<script src="{% static 'blog/archive/archive.controller.js' %}"></script>
@@ -62,13 +66,17 @@
 	<script src="{% static 'blog/view/view.module.js' %}"></script>
 	<script src="{% static 'blog/view/view.controller.js' %}"></script>
 	<script src="{% static 'blog/view/paragraph.directive.js' %}"></script>
-	<script src="{% static 'blog/create/create.module.js' %}"></script>
-	<script src="{% static 'blog/create/create.service.js' %}"></script>
-	<script src="{% static 'blog/create/create.content.controller.js' %}"></script>
-	<script src="{% static 'blog/create/create.layout.controller.js' %}"></script>
-	<script src="{% static 'blog/create/create.preview.controller.js' %}"></script>
-	<script src="{% static 'blog/create/paragraphsParserAndFormatter.directive.js' %}"></script>
-	<script src="{% static 'blog/create/tagsParserAndFormatter.directive.js' %}"></script>
+	<script src="{% static 'blog/edit/edit.module.js' %}"></script>
+	<script src="{% static 'blog/edit/edit.service.js' %}"></script>
+	<script src="{% static 'blog/edit/edit.controller.js' %}"></script>
+	<script src="{% static 'blog/edit/paragraphsParserAndFormatter.directive.js' %}"></script>
+	<script src="{% static 'blog/edit/tagsParserAndFormatter.directive.js' %}"></script>
+    
+    <!-- gallery: -->
+	<script src="{% static 'gallery/gallery.module.js' %}"></script>
+	<script src="{% static 'gallery/galleryApi.provider.js' %}"></script>
+	<script src="{% static 'gallery/gallery.controller.js' %}"></script>
+	<script src="{% static 'gallery/image.directive.js' %}"></script>
     {% endcompress %}
 
 </head>

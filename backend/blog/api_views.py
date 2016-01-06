@@ -19,6 +19,13 @@ def specific_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return json_response(post.as_dict())
 
+def specific_post_by_id(request, id):
+    """
+    Get one blog post as JSON based on id
+    """
+    post = get_object_or_404(Post, id=id)
+    return json_response(post.as_dict())
+
 def newest(request):
     """
     Get newest blog post as JSON

@@ -3,7 +3,7 @@
 angular.module('blog', [
 	'blogView',
 	'blogArchive',
-	'blogCreate',
+	'blogEdit',
     'blogNewest',
 ])
 .constant('paragraphTypes', [

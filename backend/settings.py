@@ -38,8 +38,9 @@ INSTALLED_APPS = (
     'django_nose',
     'django_libsass',
     'compressor',
-    'backend.blog',
     'backend.authentication',
+    'backend.blog',
+    'backend.gallery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,10 +105,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "frontend"),
 )
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 SASS_PROCESSOR_ENABLED = True
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 COMPRESS_OFFLINE = True
 COMPRESS_URL = STATIC_URL
 COMPRESS_ROOT = STATIC_ROOT

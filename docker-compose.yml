@@ -12,8 +12,6 @@ postgres:
 
 webData:
   image: metube/web
-  volumes:
-    - ./metube/:/usr/local/metube/metube/
   command: echo "Data-only container for TPA web"
 
 web:

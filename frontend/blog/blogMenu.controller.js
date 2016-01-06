@@ -17,8 +17,8 @@ angular.module('blog')
 		},
 		{
 			title: 'New post',
-			state: 'blog.create.content',
-			stateRoot: 'blog.create',
+			state: 'blog.edit.content',
+			stateRoot: 'blog.edit',
             visible: authenticationStatus.isAuthenticated,
 		}
 	]);

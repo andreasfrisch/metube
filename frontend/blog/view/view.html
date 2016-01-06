@@ -2,12 +2,13 @@
 	<div class="col-3-sm col-4-lg">
 	</div>
 	<div class="col-6-sm col-4-lg">
-		<div class="blogView">	
+        {{ post }}
+		<div class="blogView">
 			<div class="post">
-
 				<div class="title">
 					<div>
 						{{ post.title }}
+                        <a ui-sref="blog.edit.content({id: post.id})">edit</a>
 					</div>
 				</div>
 				<hr />
@@ -20,7 +21,7 @@
 						{{ post.author }}
 					</div>
 					<!-- HACK:
-						 Code is repeated twice to allow different layouts based on screen size
+						 markup is repeated twice to allow different layouts based on screen size
 						 TODO: fix
 					-->
 					<div class="tags float-right hidden-xs">
